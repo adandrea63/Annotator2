@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Annotator Web</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Image Annotator Web</h1>
+        </header>
+
+        <div class="main-content">
+            <!-- Pannello sinistro - Anteprime -->
+            <div class="left-panel">
+                <h2>Anteprime Immagini</h2>
+                <div class="upload-buttons">
+                    <input type="file" id="file-input" multiple accept="image/*" style="display: none;">
+                    <button id="upload-btn" class="btn btn-primary">
+                        <i class="fas fa-upload"></i> Carica Immagini
+                    </button>
+                    <button id="load-folder-btn" class="btn btn-secondary">
+                        <i class="fas fa-folder-open"></i> Carica Cartella
+                    </button>
+                </div>
+                <div class="thumbnails-container" id="thumbnails-container">
+                    <!-- Le anteprime verranno aggiunte qui dinamicamente -->
+                </div>
+            </div>
+
+            <!-- Pannello centrale - Immagine e annotazioni -->
+            <div class="center-panel">
+                <div class="image-info">
+                    <span id="current-file">Nessun file selezionato</span>
+                </div>
+                <div class="tools-panel">
+                    <div class="tool-options">
+                        <span>Strumento:</span>
+                        <label>
+                            <input type="radio" name="tool" value="rectangle" checked>
+                            Rettangolo
+                        </label>
+                        <label>
+                            <input type="radio" name="tool" value="polygon">
+                            Poligono
+                        </label>
+                    </div>
+                    <div class="action-buttons">
+                        <button id="delete-last-btn" class="btn btn-danger">
+                            <i class="fas fa-trash"></i> Elimina Ultima
+                        </button>
+                        <button id="clear-all-btn" class="btn btn-warning">
+                            <i class="fas fa-broom"></i> Cancella Tutte
+                        </button>
+                    </div>
+                </div>
+                <div class="image-container">
+                    <canvas id="annotation-canvas"></canvas>
+                </div>
+            </div>
+
+            <!-- Pannello destro - Annotazioni -->
+            <div class="right-panel">
+                <h2>Pannello Annotazioni</h2>
+                
+                <div class="annotations-list">
+                    <h3>Forme Disegnate</h3>
+                    <table id="annotations-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Tipo</th>
+                                <th>Etichetta</th>
+                            </tr>
+                        </thead>
+                        <tbody id="annotations-body">
+                            <!-- Le annotazioni verranno aggiunte qui dinamicamente -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="annotation-form">
+                    <h3>Annotazione Testuale</h3>
+                    <div class="form-group">
+                        <label for="annotation-text">Testo annotazione (max 500 caratteri):</label>
+                        <textarea id="annotation-text" rows="5" maxlength="500"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="creator-name">Creatore:</label>
+                        <input type="text" id="creator-name" placeholder="Il tuo nome">
+                    </div>
+                    <div class="form-buttons">
+                        <button id="add-annotation-btn" class="btn btn-success">
+                            <i class="fas fa-plus"></i> Aggiungi Annotazione
+                        </button>
+                        <button id="convert-dc-btn" class="btn btn-purple">
+                            <i class="fas fa-exchange-alt"></i> Converti in DC
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="save-panel">
+                    <h3>Salvataggio</h3>
+                    <button id="save-btn" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Salva Dublin Core
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modale per visualizzare i metadati Dublin Core -->
+    <div id="dc-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Metadati Dublin Core</h2>
+            <div id="dc-content"></div>
+            <div class="modal-buttons">
+                <button id="copy-dc-btn" class="btn btn-success">
+                    <i class="fas fa-copy"></i> Copia Dati
+                </button>
+                <button id="export-json-btn" class="btn btn-info">
+                    <i class="fas fa-file-export"></i> Esporta JSON
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

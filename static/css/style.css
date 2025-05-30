@@ -1,0 +1,229 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 10px;
+}
+
+header {
+    background-color: #2196F3;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.main-content {
+    display: flex;
+    flex: 1;
+    gap: 10px;
+}
+
+.left-panel {
+    background-color: #f0f0f0;
+    width: 250px;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.center-panel {
+    flex: 1;
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.right-panel {
+    background-color: #f8f8f8;
+    width: 350px;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.upload-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 15px;
+}
+
+.thumbnails-container {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.thumbnail {
+    cursor: pointer;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background-color: white;
+}
+
+.thumbnail:hover {
+    background-color: #e0e0e0;
+}
+
+.thumbnail img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.thumbnail div {
+    text-align: center;
+    font-size: 12px;
+    margin-top: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.image-info {
+    padding: 5px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.tools-panel {
+    background-color: #e0e0e0;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tool-options {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.image-container {
+    flex: 1;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+}
+
+#annotation-canvas {
+    background-color: white;
+    display: block;
+}
+
+.annotations-list {
+    flex: 1;
+    margin-bottom: 15px;
+}
+
+#annotations-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+#annotations-table th, #annotations-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+#annotations-table th {
+    background-color: #f2f2f2;
+}
+
+#annotations-table tr:hover {
+    background-color: #f5f5f5;
+    cursor: pointer;
+}
+
+#annotations-table tr.selected {
+    background-color: #e0e0e0;
+}
+
+.annotation-form {
+    margin-bottom: 15px;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group textarea, .form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.save-panel {
+    margin-top: auto;
+}
+
+.btn {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-weight: bold;
+}
+
+.btn-primary {
+    background-color: #2196F3;
+    color: white;
+}
+
+.btn-secondary {
+    background-color: #607D8B;
+    color: white;
+}
+
+.btn-success {
+    background-color: #4CAF50;
+    color: white;
